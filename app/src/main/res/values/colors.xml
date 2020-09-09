@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="backgroundFragments">#e1e2e7</color>
+    <color name="titleTextViewColor">#5b6269</color>
+    <color name="infoSectionsTextColor">#7c8085</color>
+    <color name="infoSectionsTextColor2">#cbced1</color>
+</resources>

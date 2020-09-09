@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CoronaApp</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="info">Info</string>
+    <string name="active_cases">Active cases:</string>
+    <string name="new_cases">New cases:</string>
+    <string name="new_deaths">New deaths:</string>
+    <string name="information">Information</string>
+    <string name="what_is_covid_19">What is Covid-19?</string>
+    <string name="learn_about_covid_19_virus">Learn about Covid-19 virus</string>
+    <string name="symptoms">Symptoms</string>
+    <string name="learn_covid_19_symptoms">Learn Covid-19 symptoms</string>
+    <string name="prevention_amp_treatment"><![CDATA[Prevention & treatment]]></string>
+    <string name="learn_about_treatment">Learn about treatment</string>
+    <string name="total_cases">Total cases:</string>
+    <string name="total_recovered">Total recovered:</string>
+    <string name="new_recovered">New recovered:</string>
+    <string name="total_deaths">Total deaths:</string>
+    <string name="preferenceCode">not_first_boot</string>
+</resources>
