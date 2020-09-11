@@ -18,4 +18,8 @@
     <string name="new_recovered">New recovered:</string>
     <string name="total_deaths">Total deaths:</string>
     <string name="preferenceCode">not_first_boot</string>
+    <string name="about_covid_19">About Covid-19</string>
+    <string name="coronavirus_general_info">Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.</string>
+    <string name="learn_more">Learn more about the virus</string>
+    <string name="visit_who_website">Visit WHO website</string>
 </resources>

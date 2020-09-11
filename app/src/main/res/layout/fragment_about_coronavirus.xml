@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/backgroundFragments">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_covid_19"
+        android:textSize="48sp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_constraint_layout_card_about_coronavirus"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="8dp"
+        android:elevation="16dp"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/image_view_virus"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.35"
+            android:src="@drawable/coronavirus_image_about"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/text_view_general_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/image_view_virus"
+            android:text="@string/coronavirus_general_info"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/text_view_learn_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_view_general_info"
+            android:text="@string/learn_more"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/design_default_color_primary"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_visit_who_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_view_learn_more"
+            android:text="@string/visit_who_website"
+            android:drawableStart="@drawable/ic_web"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:backgroundTint="@color/colorPrimaryDark"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:drawablePadding="8dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

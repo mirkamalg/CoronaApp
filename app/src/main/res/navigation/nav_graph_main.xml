@@ -27,7 +27,11 @@
         android:id="@+id/infoFragment"
         android:name="com.mirkamal.coronaapp.ui.fragments.info.InfoFragment"
         android:label="InfoFragment"
-        tools:layout="@layout/fragment_info"/>
+        tools:layout="@layout/fragment_info">
+        <action
+            android:id="@+id/action_infoFragment_to_aboutCoronavirusFragment"
+            app:destination="@id/aboutCoronavirusFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.mirkamal.coronaapp.ui.fragments.details.DetailsFragment"
@@ -37,4 +41,9 @@
             android:name="countryName"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutCoronavirusFragment"
+        android:name="com.mirkamal.coronaapp.ui.fragments.aboutcoronavirus.AboutCoronavirusFragment"
+        android:label="AboutCoronavirusFragment"
+        tools:layout="@layout/fragment_about_coronavirus"/>
 </navigation>
