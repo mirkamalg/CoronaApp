@@ -1,62 +1,44 @@
 package com.mirkamal.coronaapp.ui.activities;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
-import androidx.work.Constraints;
-import androidx.work.NetworkType;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mirkamal.coronaapp.R;
-import com.mirkamal.coronaapp.utils.lib.BackgroundWorker;
-
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
+import com.mirkamal.coronaapp.utils.lib.NotificationBroadcast;
 
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-
-    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-
         configureNavigation();
 
-        configureWorker();
+        configureNotifications();
+//        configureWorker();
     }
 
-    private void configureWorker() {
+    private void configureNotifications() {
+        Intent intent = new Intent(MainActivity.this, NotificationBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
 
-        // If app is opened for the first time
-        if (isBackgroundWorkNeededToBeInitialized()) {
-            Constraints constraints = new Constraints.Builder()
-                    .setRequiredNetworkType(NetworkType.CONNECTED)
-                    .setRequiresBatteryNotLow(true)
-                    .build();
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-            String TAG = UUID.randomUUID().toString();
-            PeriodicWorkRequest periodicNotificationSender =
-                    new PeriodicWorkRequest.Builder(BackgroundWorker.class, 15, TimeUnit.MINUTES)
-                            .addTag(TAG)
-                            .setConstraints(constraints)
-                            .build();
+        long currentTime = System.currentTimeMillis();
 
-            WorkManager workManager = WorkManager.getInstance();
-            workManager.enqueue(periodicNotificationSender);
-        }
-        setSharedPreferenceData();
+        long tenSecondsLater = 10000;
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime + tenSecondsLater, pendingIntent);
     }
 
     private void configureNavigation() {
@@ -65,15 +47,5 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
         assert navHostFragment != null;
         NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.getNavController());
-    }
-
-    private boolean isBackgroundWorkNeededToBeInitialized() {
-        return sharedPreferences.getBoolean(getString(R.string.preferenceCode), false);
-    }
-
-    private void setSharedPreferenceData() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(getString(R.string.preferenceCode), true);
-        editor.apply();
     }
 }
