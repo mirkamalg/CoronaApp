@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
@@ -25,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         configureNavigation();
 
         configureNotifications();
-//        configureWorker();
     }
 
     private void configureNotifications() {
@@ -34,11 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        long currentTime = System.currentTimeMillis();
-
-        long tenSecondsLater = 10000;
-
-        alarmManager.set(AlarmManager.RTC_WAKEUP, currentTime + tenSecondsLater, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_DAY,
+                AlarmManager.INTERVAL_HALF_DAY, pendingIntent);
     }
 
     private void configureNavigation() {
