@@ -45,4 +45,9 @@ public class InfoFragment extends Fragment {
         controller.navigate(InfoFragmentDirections.actionInfoFragmentToSymptomsFragment());
     }
 
+    @OnClick(R.id.view_prevention_and_treatment)
+    void onPreventionAndTreatmentClicked() {
+        controller.navigate(InfoFragmentDirections.actionInfoFragmentToPreventionAndTreatmentFragment());
+    }
+
 }

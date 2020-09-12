@@ -26,4 +26,13 @@
     <string name="common_symptoms">&#x26A0; Common:\n• Fever\n• Dry cough\n• Tiredness</string>
     <string name="less_common_symptoms">&#x26A0; Less common:\n• Loss of taste or smell\n• Diarrhoea\n• Sore throat</string>
     <string name="learn_more_about_the_symptoms">Learn more about the symptoms</string>
+    <string name="stay_safe">Stay safe</string>
+    <string name="prevention">Prevention</string>
+    <string name="wash_your_hands_regularly">Wash your hands regularly</string>
+    <string name="avoid_touching_your_face">Avoid touching your face</string>
+    <string name="practice_physical_distancing">Practice physical distancing</string>
+    <string name="treatment">Treatment</string>
+    <string name="to_date_there_are_no_specific_vaccines_or_medicines_for_covid_19">To date, there are no specific vaccines or medicines for COVID-19</string>
+    <string name="if_you_feel_sick_you_should_rest_drink_plenty_of_fluid_and_eat_nutritious_food">If you feel sick you should rest, drink plenty of fluid, and eat nutritious food</string>
+    <string name="cover_your_mouth_and_nose_when_coughing_or_sneezing">Cover your mouth and nose when coughing or sneezing</string>
 </resources>

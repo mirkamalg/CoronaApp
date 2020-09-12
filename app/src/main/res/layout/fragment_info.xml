@@ -147,7 +147,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/text_view_prevention_and_treatment"
+        android:id="@+id/view_prevention_and_treatment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"

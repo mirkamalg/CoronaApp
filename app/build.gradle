@@ -59,5 +59,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
 
-    implementation "android.arch.work:work-runtime:2.4.0"
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
 }

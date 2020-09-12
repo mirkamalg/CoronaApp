@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_infoFragment_to_symptomsFragment"
             app:destination="@id/symptomsFragment" />
+        <action
+            android:id="@+id/action_infoFragment_to_preventionAndTreatmentFragment"
+            app:destination="@id/preventionAndTreatmentFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -54,4 +57,9 @@
         android:name="com.mirkamal.coronaapp.ui.fragments.symptoms.SymptomsFragment"
         android:label="SymptomsFragment"
         tools:layout="@layout/fragment_symptoms"/>
+    <fragment
+        android:id="@+id/preventionAndTreatmentFragment"
+        android:name="com.mirkamal.coronaapp.ui.fragments.preventionandtreatment.PreventionAndTreatmentFragment"
+        android:label="PreventionAndTreatmentFragment"
+        tools:layout="@layout/fragment_prevention_and_treatment"/>
 </navigation>
