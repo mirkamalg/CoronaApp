@@ -51,7 +51,8 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_percent="0.6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardElevation="0dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -109,7 +110,8 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_percent="0.6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardElevation="0dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -167,7 +169,8 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_percent="0.6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardElevation="0dp">
 
             <ImageView
                 android:layout_width="wrap_content"
