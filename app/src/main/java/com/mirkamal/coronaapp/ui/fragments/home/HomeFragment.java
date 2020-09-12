@@ -1,9 +1,13 @@
 package com.mirkamal.coronaapp.ui.fragments.home;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,8 +27,11 @@ import com.mirkamal.coronaapp.repository.MainRepository;
 import com.mirkamal.coronaapp.utils.callbacks.DataRequestCallback;
 import com.mirkamal.coronaapp.utils.lib.Converter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +44,9 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.recycler_view_countries)
     RecyclerView recyclerViewCountries;
 
+    @BindView(R.id.text_view_last_updated)
+    TextView textViewLastUpdated;
+
     private CountriesListAdapter adapter;
 
     private MainRepository repository;
@@ -46,6 +56,8 @@ public class HomeFragment extends Fragment {
     private List<CountryPOJO> countryPOJOS = new ArrayList<>();
 
     private NavController navController;
+
+    SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
@@ -61,19 +73,29 @@ public class HomeFragment extends Fragment {
 
         navController = NavHostFragment.findNavController(this);
 
+        sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE);
+
         ButterKnife.bind(this, view);
 
         repository = new MainRepository(ApiInitHelper.getInstance().getService(), getContext(), new DataRequestCallback() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onSuccessfulRequest() {
                 refreshLayout.setRefreshing(false);
                 Toast.makeText(getContext(), "Updated!", Toast.LENGTH_SHORT).show();
+
+                String time = "Last updated: " + getCurrentTime();
+                textViewLastUpdated.setText(time);
+
+                saveTimeToSharedPreferences(time);
             }
 
             @Override
             public void onFailedRequest() {
                 refreshLayout.setRefreshing(false);
                 Toast.makeText(getContext(), "Failed to connect!", Toast.LENGTH_SHORT).show();
+
+                getTimeFromSharedPreferences();
 
                 List<CountryPOJO> countryPOJOS = new ArrayList<>();
                 List<Country> countries = database.getCountriesDao().getAllCountriesFromDatabase();
@@ -92,6 +114,24 @@ public class HomeFragment extends Fragment {
 
         configureRefreshLayout();
         configureRecyclerView();
+    }
+
+    private void saveTimeToSharedPreferences(String time) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("lastUpdated", time);
+        editor.apply();
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void getTimeFromSharedPreferences() {
+        textViewLastUpdated.setText("Last updated: " + sharedPreferences.getString("lastUpdated", "Never"));
+    }
+
+    private String getCurrentTime() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd.MM.yyyy", Locale.getDefault());
+
+        return sdf.format(new Date());
     }
 
     private void configureRefreshLayout() {
