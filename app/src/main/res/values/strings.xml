@@ -22,4 +22,8 @@
     <string name="coronavirus_general_info">Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.</string>
     <string name="learn_more">Learn more about the virus</string>
     <string name="visit_who_website">Visit WHO website</string>
+    <string name="consider_consulting">Consider consulting with a doctor if you have similar symptoms</string>
+    <string name="common_symptoms">&#x26A0; Common:\n• Fever\n• Dry cough\n• Tiredness</string>
+    <string name="less_common_symptoms">&#x26A0; Less common:\n• Loss of taste or smell\n• Diarrhoea\n• Sore throat</string>
+    <string name="learn_more_about_the_symptoms">Learn more about the symptoms</string>
 </resources>
