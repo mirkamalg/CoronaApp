@@ -1,9 +1,10 @@
-package com.mirkamal.coronaapp.ui.fragments.info;
+package com.mirkamal.coronaapp.ui.fragments.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,17 +14,21 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.mirkamal.coronaapp.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class InfoFragment extends Fragment {
+public class SettingsFragment extends Fragment {
+
+    @BindView(R.id.text_view_current_period)
+    TextView textViewCurrentPeriod;
 
     NavController controller;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_info, container, false);
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
     @Override
@@ -35,24 +40,13 @@ public class InfoFragment extends Fragment {
         controller = NavHostFragment.findNavController(this);
     }
 
-    @OnClick(R.id.view_about_virus)
-    void onAboutVirusClicked() {
-        controller.navigate(InfoFragmentDirections.actionInfoFragmentToAboutCoronavirusFragment());
+    @OnClick(R.id.button_pick_time_interval)
+    void onPickTimeIntervalButtonClicked() {
+
     }
 
-    @OnClick(R.id.view_symptoms)
-    void onSymptomsClicked() {
-        controller.navigate(InfoFragmentDirections.actionInfoFragmentToSymptomsFragment());
+    @OnClick(R.id.image_view_arrow)
+    void onArrowClicked() {
+        controller.popBackStack();
     }
-
-    @OnClick(R.id.view_prevention_and_treatment)
-    void onPreventionAndTreatmentClicked() {
-        controller.navigate(InfoFragmentDirections.actionInfoFragmentToPreventionAndTreatmentFragment());
-    }
-
-    @OnClick(R.id.view_settings)
-    void onSettingsViewClicked() {
-        controller.navigate(InfoFragmentDirections.actionInfoFragmentToSettingsFragment());
-    }
-
 }

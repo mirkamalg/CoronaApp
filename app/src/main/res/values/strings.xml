@@ -35,4 +35,7 @@
     <string name="to_date_there_are_no_specific_vaccines_or_medicines_for_covid_19">To date, there are no specific vaccines or medicines for COVID-19</string>
     <string name="if_you_feel_sick_you_should_rest_drink_plenty_of_fluid_and_eat_nutritious_food">If you feel sick you should rest, drink plenty of fluid, and eat nutritious food</string>
     <string name="cover_your_mouth_and_nose_when_coughing_or_sneezing">Cover your mouth and nose when coughing or sneezing</string>
+    <string name="settings">Settings</string>
+    <string name="choose_notification_interval">Choose notification interval</string>
+    <string name="pick">Pick</string>
 </resources>
