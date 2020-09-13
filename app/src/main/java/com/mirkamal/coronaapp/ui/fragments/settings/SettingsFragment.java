@@ -16,6 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.mirkamal.coronaapp.R;
+import com.mirkamal.coronaapp.utils.lib.TextChangeCallbackHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,9 +58,10 @@ public class SettingsFragment extends Fragment {
         textViewCurrentPeriod.setText("Currently: " + preferences.getInt("notificationInterval", 12) + " hour(s)");
     }
 
+    @SuppressLint("SetTextI18n")
     @OnClick(R.id.button_pick_time_interval)
     void onPickTimeIntervalButtonClicked() {
-        controller.navigate(SettingsFragmentDirections.actionSettingsFragmentToPickTimeIntervalDialogFragment());
+        controller.navigate(SettingsFragmentDirections.actionSettingsFragmentToPickTimeIntervalDialogFragment(new TextChangeCallbackHelper(period -> textViewCurrentPeriod.setText("Currently: " + period + " hour(s)"))));
     }
 
     @OnClick(R.id.image_view_arrow)

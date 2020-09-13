@@ -78,5 +78,9 @@
         android:id="@+id/pickTimeIntervalDialogFragment"
         android:name="com.mirkamal.coronaapp.ui.fragments.dialogs.picktimeinterval.PickTimeIntervalDialogFragment"
         android:label="PickTimeIntervalDialogFragment"
-        tools:layout="@layout/dialog_fragment_pick_time_interval"/>
+        tools:layout="@layout/dialog_fragment_pick_time_interval">
+        <argument
+            android:name="helper"
+            app:argType="com.mirkamal.coronaapp.utils.lib.TextChangeCallbackHelper" />
+    </dialog>
 </navigation>

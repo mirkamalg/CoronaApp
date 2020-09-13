@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.mirkamal.coronaapp.R;
+import com.mirkamal.coronaapp.utils.callbacks.TextChangerCallback;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +26,8 @@ public class PickTimeIntervalDialogFragment extends DialogFragment {
 
     SharedPreferences preferences;
 
+    TextChangerCallback callback;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class PickTimeIntervalDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this, view);
+
+        assert getArguments() != null;
+        callback = PickTimeIntervalDialogFragmentArgs.fromBundle(getArguments()).getHelper().getCallback();
 
         configureSharedPreferences();
         configureNumberPicker();
@@ -69,6 +75,8 @@ public class PickTimeIntervalDialogFragment extends DialogFragment {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("notificationInterval", picker.getValue());
         editor.apply();
+
+        callback.handleTextChange(picker.getValue());
 
         dismiss();
     }
