@@ -2,7 +2,9 @@ package com.mirkamal.coronaapp.ui.activities;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
 
@@ -16,7 +18,9 @@ import com.mirkamal.coronaapp.utils.lib.NotificationBroadcast;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
+
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
         configureNavigation();
 
+        configureSharedPreferences();
+
         configureNotifications();
+    }
+
+    private void configureSharedPreferences() {
+        preferences = this.getPreferences(Context.MODE_PRIVATE);
     }
 
     private void configureNotifications() {
@@ -34,9 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
+        long userPeriod = preferences.getInt("notificationInterval", 12) * 360000;
+
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HALF_DAY,
-                AlarmManager.INTERVAL_HALF_DAY, pendingIntent);
+                SystemClock.elapsedRealtime() + userPeriod,
+                userPeriod, pendingIntent);
     }
 
     private void configureNavigation() {
