@@ -1,8 +1,12 @@
 package com.mirkamal.coronaapp.ui.fragments.dialogs.picktimeinterval;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +18,13 @@ import androidx.fragment.app.DialogFragment;
 
 import com.mirkamal.coronaapp.R;
 import com.mirkamal.coronaapp.utils.callbacks.TextChangerCallback;
+import com.mirkamal.coronaapp.utils.lib.NotificationBroadcast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.content.Context.ALARM_SERVICE;
 
 public class PickTimeIntervalDialogFragment extends DialogFragment {
 
@@ -70,7 +77,6 @@ public class PickTimeIntervalDialogFragment extends DialogFragment {
 
     @OnClick(R.id.button_set)
     void onSetClicked() {
-        //TODO save to shared preferences and update the text in settings fragment
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("notificationInterval", picker.getValue());
@@ -78,6 +84,21 @@ public class PickTimeIntervalDialogFragment extends DialogFragment {
 
         callback.handleTextChange(picker.getValue());
 
+        updateNotificationConfiguration();
+
         dismiss();
+    }
+
+    private void updateNotificationConfiguration() {
+        Intent intent = new Intent(getContext(), NotificationBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intent, 0);
+
+        AlarmManager alarmManager = (AlarmManager) requireActivity().getSystemService(ALARM_SERVICE);
+
+        long userPeriod = preferences.getInt("notificationInterval", 12) * 360000;
+
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime() + userPeriod,
+                userPeriod, pendingIntent);
     }
 }
