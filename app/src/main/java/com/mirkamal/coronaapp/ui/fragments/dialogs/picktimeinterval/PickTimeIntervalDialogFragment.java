@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -83,6 +84,8 @@ public class PickTimeIntervalDialogFragment extends DialogFragment {
         editor.apply();
 
         callback.handleTextChange(picker.getValue());
+
+        Toast.makeText(getContext(), "Period is set: " + picker.getValue() + " hour(s)", Toast.LENGTH_SHORT).show();
 
         updateNotificationConfiguration();
 
