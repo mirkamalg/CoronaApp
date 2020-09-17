@@ -110,6 +110,11 @@ public class HomeFragment extends Fragment {
 
                 adapter.submitList(countryPOJOS);
             }
+
+            @Override
+            public void onApiCaching() {
+                Toast.makeText(getContext(), "API is caching, try again later", Toast.LENGTH_SHORT).show();
+            }
         });
 
         configureRefreshLayout();

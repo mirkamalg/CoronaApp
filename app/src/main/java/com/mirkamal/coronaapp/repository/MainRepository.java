@@ -62,19 +62,23 @@ public class MainRepository {
                 callback.onSuccessfulRequest();
 
                 List<Country> countries = new ArrayList<>();
-                for (CountryPOJO countryPOJO : countryPOJOS) {
-                    Country country = Converter.convertCountryPOJOToCountry(countryPOJO);
+                try {
+                    for (CountryPOJO countryPOJO : countryPOJOS) {
+                        Country country = Converter.convertCountryPOJOToCountry(countryPOJO);
 
-                    try {
-                        if (database.getCountriesDao().getCountryByName(country.getName()).getFavorite().equals("true")) {
-                            country.setFavorite("true");
-                        }
-                    } catch (Exception ignored) {}
+                        try {
+                            if (database.getCountriesDao().getCountryByName(country.getName()).getFavorite().equals("true")) {
+                                country.setFavorite("true");
+                            }
+                        } catch (Exception ignored) {}
 
-                    countries.add(country);
+                        countries.add(country);
+                    }
+
+                    database.getCountriesDao().addToDatabase(countries);
+                } catch (Exception e) {
+                    callback.onApiCaching();
                 }
-
-                database.getCountriesDao().addToDatabase(countries);
             }
 
             @Override

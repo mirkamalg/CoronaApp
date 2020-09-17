@@ -6,4 +6,6 @@ public interface DataRequestCallback {
 
     void onFailedRequest();
 
+    default void onApiCaching() {};
+
 }
