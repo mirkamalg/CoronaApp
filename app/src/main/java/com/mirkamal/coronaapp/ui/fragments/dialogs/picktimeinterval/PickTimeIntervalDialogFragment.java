@@ -71,6 +71,11 @@ public class PickTimeIntervalDialogFragment extends DialogFragment {
         return R.style.FullScreenDialog;
     }
 
+    @OnClick(R.id.constraint_layout_time_picker_background)
+    void onBackgroundClicked() {
+        dismiss();
+    }
+
     @OnClick(R.id.button_cancel)
     void onCancelClicked() {
         dismiss();

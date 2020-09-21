@@ -2,6 +2,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
 
     <solid android:color="@android:color/white"/>
-    <corners android:radius="@dimen/dialog_fragment_time_picker_corners"/>
+    <corners android:topLeftRadius="@dimen/dialog_fragment_time_picker_corners" android:topRightRadius="@dimen/dialog_fragment_time_picker_corners"/>
 
 </shape>
