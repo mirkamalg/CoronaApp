@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.mirkamal.coronaapp.R;
 import com.mirkamal.coronaapp.utils.callbacks.TextChangerCallback;
 import com.mirkamal.coronaapp.utils.lib.NotificationBroadcast;
@@ -27,7 +27,7 @@ import butterknife.OnClick;
 
 import static android.content.Context.ALARM_SERVICE;
 
-public class PickTimeIntervalDialogFragment extends DialogFragment {
+public class PickTimeIntervalDialogFragment extends BottomSheetDialogFragment {
 
     @BindView(R.id.number_picker)
     NumberPicker picker;

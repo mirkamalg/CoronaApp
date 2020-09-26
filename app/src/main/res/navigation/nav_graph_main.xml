@@ -72,11 +72,7 @@
         tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_pickTimeIntervalDialogFragment"
-            app:destination="@id/pickTimeIntervalDialogFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:destination="@id/pickTimeIntervalDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/pickTimeIntervalDialogFragment"
